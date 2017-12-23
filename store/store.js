@@ -4,7 +4,7 @@ import { combineReducers } from 'redux'
 
 const initialTagManagerState = {
   categories: [],
-}
+};
 
 export const categories = (state = initialTagManagerState, action) => {
   switch (action.type) {
@@ -22,7 +22,7 @@ export const categories = (state = initialTagManagerState, action) => {
       }
     default:
       return state;
-    }
+  }
 }
 
 let combinedReducers = combineReducers({
@@ -34,6 +34,6 @@ let store = createStore(
   applyMiddleware(thunk)
 );
 
-store.subscribe((...args) => { console.log(store.getState()) })
+store.subscribe((...args) => { console.log(store.getState()) });
 
 export default store;

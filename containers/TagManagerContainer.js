@@ -1,15 +1,11 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
-import TagManager from '../components/TagManager.js';
+import TagManager from '../components/TagManager';
 
 const mapStateToProps = state => ({
     categories: state.categories,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    addCategory: (categoryName) => {
-        dispatch({type: 'ADD_CATEGORY', newCategory: categoryName})
-    },
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(TagManager)
