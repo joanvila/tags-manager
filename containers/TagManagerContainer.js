@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import TagManager from '../components/TagManager.js';
 
 const mapStateToProps = state => ({
-    tags: state.tags,
+    categories: state.categories,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    add: (tag) => {
-        dispatch({type: 'ADD', newItem: tag})
+    addCategory: (categoryName) => {
+        dispatch({type: 'ADD_CATEGORY', newCategory: categoryName})
     },
 });
 

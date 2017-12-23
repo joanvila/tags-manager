@@ -2,25 +2,37 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk';
 import { combineReducers } from 'redux'
 
-export const tags = (state = {tags: []}, action) => {
-    switch (action.type) {
-        case 'ADD':
-          return {
-            ...state,
-            tags: [...state.tags, action.newItem]
+const initialTagManagerState = {
+  categories: [],
+}
+
+export const categories = (state = initialTagManagerState, action) => {
+  switch (action.type) {
+    case 'ADD_CATEGORY':
+      return {
+        ...state,
+        categories: [
+          ...state.categories,
+          {
+            key: action.newCategory.replace(/\s+/g, ''),
+            name: action.newCategory,
+            tags: [],
           }
-        default:
-            return state;
+        ]
+      }
+    default:
+      return state;
     }
 }
 
 let combinedReducers = combineReducers({
-    tags,
+  categories,
 });
 
 let store = createStore(
-    combinedReducers,
-    applyMiddleware(thunk));
+  combinedReducers,
+  applyMiddleware(thunk)
+);
 
 store.subscribe((...args) => { console.log(store.getState()) })
 
