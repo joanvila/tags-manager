@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 
+import Category from './Category';
 import Header from './Header';
 import Footer from './Footer';
 import NewCategoryContainer from '../containers/NewCategoryContainer';
@@ -23,8 +24,10 @@ export default class TagManager extends React.Component {
         <ScrollView style={styles.scrollview}>
           <NewCategoryContainer />
           <FlatList
+            style={styles.categoryList}
+            numColumns={2}
             data={this.props.categories.categories}
-            renderItem={({item}) => <Text>{item.name}</Text>}
+            renderItem={({item}) => <Category name={item.name} />}
           />
         </ScrollView>
         <Footer/>
@@ -42,5 +45,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#fff',
+  },
+  categoryList: {
+    paddingLeft: 5,
+    paddingRight: 5,
   },
 });
