@@ -1,25 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  Modal,
   StyleSheet,
   Text,
-  View,
   TouchableOpacity,
+  View,
 } from 'react-native';
+
+import CategoryModal from './CategoryModal';
 
 export default class Category extends React.Component {
   constructor() {
     super();
+    this.state = { modalVisible: false };
+    this.toggleModal = this.toggleModal.bind(this);
   }
+
+  toggleModal() {
+    this.setState({ modalVisible: !this.state.modalVisible });
+ }
 
   render() {
     return (
       <View style={styles.categoryContainer}>
         <TouchableOpacity
-          onPress={this.props.openCategoryDetails}
+          onPress={this.toggleModal}
           style={styles.categoryButton}>
           <Text style={styles.categoryName}>{this.props.name}</Text>
         </TouchableOpacity>
+
+        <Modal
+          animationType={"slide"}
+          transparent={false}
+          visible={this.state.modalVisible}>
+          <CategoryModal name={this.props.name} toggleModal={this.toggleModal}/>
+        </Modal>
+
       </View>
     );
   }
