@@ -23,11 +23,13 @@ export default class TagManager extends React.Component {
         <Header/>
         <ScrollView style={styles.scrollview}>
           <NewCategoryContainer />
+          <View style={styles.separator}></View>
           <FlatList
             style={styles.categoryList}
-            numColumns={2}
+            numColumns={1}
             data={this.props.categories.categories}
-            renderItem={({item}) => <Category name={item.name} />}
+            renderItem={({item}) =>
+              <Category name={item.name} openCategoryDetails={() => {}}/>}
           />
         </ScrollView>
         <Footer/>
@@ -45,6 +47,11 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#fff',
+  },
+  separator: {
+    borderWidth: 0.5,
+    borderColor:'#eff0f1',
+    margin: 15,
   },
   categoryList: {
     paddingLeft: 5,

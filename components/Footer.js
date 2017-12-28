@@ -28,6 +28,7 @@ export default class Header extends React.Component {
         <Button
           title={buttonTitle}
           style={styles.title}
+          color='white'
           onPress={this.visitInstagram} />
       </View>
     );
