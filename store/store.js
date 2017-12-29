@@ -19,11 +19,23 @@ export const categories = (state = initialTagManagerState, action) => {
             tags: [],
           }
         ]
-      }
+      };
+    case 'ADD_TAG_TO_CATEGORY':
+      return {
+        ...state,
+        categories: state.categories.map(category => {
+          if (category.key === action.categoryKey) {
+            return {
+              ...category,
+              tags: [...category.tags, action.tag]}
+          }
+          return category;
+        }),
+      };
     default:
       return state;
   }
-}
+};
 
 let combinedReducers = combineReducers({
   categories,

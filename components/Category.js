@@ -34,7 +34,10 @@ export default class Category extends React.Component {
           animationType={"slide"}
           transparent={false}
           visible={this.state.modalVisible}>
-          <CategoryModal name={this.props.name} toggleModal={this.toggleModal}/>
+          <CategoryModal
+            name={this.props.name}
+            toggleModal={this.toggleModal}
+            categoryKey={this.props.categoryKey}/>
         </Modal>
 
       </View>
@@ -67,4 +70,5 @@ const styles = StyleSheet.create({
 
 Category.propTypes = {
   name: PropTypes.string,
+  categoryKey: PropTypes.string,
 };

@@ -28,7 +28,8 @@ export default class TagManager extends React.Component {
             style={styles.categoryList}
             numColumns={1}
             data={this.props.categories.categories}
-            renderItem={({item}) => <Category name={item.name} />}
+            renderItem={({item}) =>
+              <Category name={item.name} categoryKey={item.key} />}
           />
         </ScrollView>
         <Footer/>

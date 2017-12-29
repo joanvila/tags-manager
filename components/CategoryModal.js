@@ -7,7 +7,9 @@ import {
   View,
 } from 'react-native';
 
-export default class Category extends React.Component {
+import NewTagContainer from '../containers/NewTagContainer';
+
+export default class CategoryModal extends React.Component {
   constructor() {
     super();
   }
@@ -20,10 +22,11 @@ export default class Category extends React.Component {
             <Text style={styles.closeModalText}>X</Text>
           </TouchableOpacity>
           <Text style={styles.centerHeader}>{this.props.name}</Text>
-          <View style={styles.righHeader}></View>
+          <View style={styles.rightHeader}></View>
         </View>
         <View style={styles.separator}></View>
-        <Text style={styles.text}>Modal is open!</Text>
+        <Text style={styles.sectionTitle}>Tags</Text>
+        <NewTagContainer categoryKey={this.props.categoryKey}/>
       </View>
     );
   }
@@ -61,9 +64,13 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginBottom: 15,
   },
+  sectionTitle: {
+    fontSize: 18,
+  }
 });
 
-Category.propTypes = {
-  name: PropTypes.string,
-  toggleModal: PropTypes.func,
+CategoryModal.propTypes = {
+  name: PropTypes.string.isRequired,
+  categoryKey: PropTypes.string.isRequired,
+  toggleModal: PropTypes.func.isRequired,
 };
