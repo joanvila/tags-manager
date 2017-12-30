@@ -1,12 +1,14 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { combineReducers } from 'redux';
+import { uuidv4 } from '../util/uuidv4';
 
 const initialTagManagerState = {
   categories: [],
 };
 
 export const categories = (state = initialTagManagerState, action) => {
+  // TODO: Implement a byId and byHash store to perform efficient selectors
   switch (action.type) {
     case 'ADD_CATEGORY':
       return {
@@ -14,7 +16,7 @@ export const categories = (state = initialTagManagerState, action) => {
         categories: [
           ...state.categories,
           {
-            key: action.newCategory.replace(/\s+/g, ''),
+            key: uuidv4(),
             name: action.newCategory,
             tags: [],
           }
@@ -25,6 +27,7 @@ export const categories = (state = initialTagManagerState, action) => {
         ...state,
         categories: state.categories.map(category => {
           if (category.key === action.categoryKey) {
+            // TODO: Add the tag only if it doesn't exist
             return {
               ...category,
               tags: [...category.tags, action.tag]}

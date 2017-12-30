@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import NewTagContainer from '../containers/NewTagContainer';
+import CategoryTagsContainer from '../containers/CategoryTagsContainer';
 
 export default class CategoryModal extends React.Component {
   constructor() {
@@ -27,6 +28,8 @@ export default class CategoryModal extends React.Component {
         <View style={styles.separator}></View>
         <Text style={styles.sectionTitle}>Tags</Text>
         <NewTagContainer categoryKey={this.props.categoryKey}/>
+        <View style={styles.separator}></View>
+        <CategoryTagsContainer categoryKey={this.props.categoryKey}/>
       </View>
     );
   }

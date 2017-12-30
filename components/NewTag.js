@@ -32,6 +32,8 @@ export default class NewTag extends React.Component {
           style={styles.categoryInput}
           onChangeText={(newTag) => this.setState({newTag})}
           value={this.state.newTag}
+          autoCapitalize='none'
+          autoCorrect={false}
         />
         <View style={styles.categoryButtonContainer}>
           <TouchableOpacity
