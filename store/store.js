@@ -35,6 +35,19 @@ export const categories = (state = initialTagManagerState, action) => {
           return category;
         }),
       };
+    case 'DELETE_TAG_FROM_CATEGORY':
+      return {
+        ...state,
+        categories: state.categories.map(category => {
+          if (category.key === action.categoryKey) {
+            console.log(category);
+            return {
+              ...category,
+              tags: category.tags.filter(tag => tag !== action.tag)}
+          }
+          return category;
+        }),
+      };
     default:
       return state;
   }
