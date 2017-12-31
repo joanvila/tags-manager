@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  Alert,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -13,6 +14,19 @@ import CategoryTagsContainer from '../containers/CategoryTagsContainer';
 export default class CategoryModal extends React.Component {
   constructor() {
     super();
+    this.editCategoryButtonHandler = this.editCategoryButtonHandler.bind(this);
+  }
+
+  editCategoryButtonHandler() {
+    Alert.alert(
+      `Edit ${this.props.name}`,
+      'Only delete is possible right now',
+      [
+        {text: 'Cancel', onPress: () => {}, style: 'cancel'},
+        {text: 'Delete', onPress: () => console.log('OK Pressed'), style: 'destructive'},
+      ],
+      { cancelable: false }
+    )
   }
 
   render() {
@@ -23,12 +37,13 @@ export default class CategoryModal extends React.Component {
             <Text style={styles.closeModalText}>X</Text>
           </TouchableOpacity>
           <Text style={styles.centerHeader}>{this.props.name}</Text>
-          <View style={styles.rightHeader}></View>
+          <TouchableOpacity onPress={this.editCategoryButtonHandler} style={styles.rightHeader}>
+            <Text style={styles.editCategoryText}>Edit</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.separator}></View>
         <Text style={styles.sectionTitle}>Tags</Text>
         <NewTagContainer categoryKey={this.props.categoryKey}/>
-        <View style={styles.separator}></View>
         <CategoryTagsContainer categoryKey={this.props.categoryKey}/>
       </View>
     );
@@ -48,18 +63,26 @@ const styles = StyleSheet.create({
   },
   closeModalText: {
     fontSize: 18,
-    textAlign: 'center'
+    color: '#524c61',
+    fontWeight: 'bold',
   },
   leftHeader: {
-    flex: 0.1,
+    flex: 0.2,
   },
   centerHeader: {
     textAlign: 'center',
-    flex: 0.8,
+    flex: 0.6,
     fontSize: 18,
+    color: '#524c61',
+    fontWeight: 'bold',
   },
   rightHeader: {
-    flex: 0.1,
+    flex: 0.2,
+  },
+  editCategoryText: {
+    textAlign: 'right',
+    fontSize: 18,
+    color: '#9a95a7',
   },
   separator: {
     borderWidth: 0.5,
@@ -69,6 +92,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
+    color: '#524c61',
   }
 });
 

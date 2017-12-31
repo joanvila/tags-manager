@@ -20,7 +20,9 @@ export default class Tag extends React.Component {
       `#${this.props.tag}`,
       [
         {text: 'Cancel', onPress: () => {}, style: 'cancel'},
-        {text: 'Delete', onPress: () => this.props.deleteTag(this.props.tag)},
+        {text: 'Delete',
+          onPress: () => this.props.deleteTag(this.props.tag),
+          style: 'destructive'},
       ],
       { cancelable: false }
     );
