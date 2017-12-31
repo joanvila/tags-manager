@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 
-import CategoryModal from './CategoryModal';
+import CategoryModalContainer from '../containers/CategoryModalContainer';
 
 export default class Category extends React.Component {
   constructor() {
@@ -34,7 +34,7 @@ export default class Category extends React.Component {
           animationType={"slide"}
           transparent={false}
           visible={this.state.modalVisible}>
-          <CategoryModal
+          <CategoryModalContainer
             name={this.props.name}
             toggleModal={this.toggleModal}
             categoryKey={this.props.categoryKey}/>

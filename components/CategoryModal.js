@@ -23,7 +23,7 @@ export default class CategoryModal extends React.Component {
       'Only delete is possible right now',
       [
         {text: 'Cancel', onPress: () => {}, style: 'cancel'},
-        {text: 'Delete', onPress: () => console.log('OK Pressed'), style: 'destructive'},
+        {text: 'Delete', onPress: () => this.props.deleteCategory(), style: 'destructive'},
       ],
       { cancelable: false }
     )
@@ -100,4 +100,5 @@ CategoryModal.propTypes = {
   name: PropTypes.string.isRequired,
   categoryKey: PropTypes.string.isRequired,
   toggleModal: PropTypes.func.isRequired,
+  deleteCategory: PropTypes.func.isRequired,
 };

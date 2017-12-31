@@ -12,8 +12,7 @@ NewTagContainer.propTypes = {
   categoryKey: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = state => ({
-});
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   addTag: (tag, categoryKey) => {

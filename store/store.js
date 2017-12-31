@@ -22,6 +22,11 @@ export const categories = (state = initialTagManagerState, action) => {
           }
         ]
       };
+    case 'DELETE_CATEGORY':
+      return {
+        ...state,
+        categories: state.categories.filter(category => category.key !== action.categoryKey)
+      };
     case 'ADD_TAG_TO_CATEGORY':
       return {
         ...state,
@@ -30,7 +35,8 @@ export const categories = (state = initialTagManagerState, action) => {
             // TODO: Add the tag only if it doesn't exist
             return {
               ...category,
-              tags: [...category.tags, action.tag]}
+              tags: [...category.tags, action.tag]
+            };
           }
           return category;
         }),
@@ -43,7 +49,8 @@ export const categories = (state = initialTagManagerState, action) => {
             console.log(category);
             return {
               ...category,
-              tags: category.tags.filter(tag => tag !== action.tag)}
+              tags: category.tags.filter(tag => tag !== action.tag)
+            };
           }
           return category;
         }),
