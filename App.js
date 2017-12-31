@@ -2,17 +2,22 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { Provider } from 'react-redux';
-import { connect } from 'react-redux';
-import store from './store/store.js';
+import { PersistGate } from 'redux-persist/es/integration/react';
+
+import configureStore from './store/store';
+const { persistor, store } = configureStore();
+
 import TagManagerContainer from './containers/TagManagerContainer';
 
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <View style={styles.container}>
-          <TagManagerContainer />
-        </View>
+        <PersistGate persistor={persistor}>
+          <View style={styles.container}>
+            <TagManagerContainer />
+          </View>
+        </PersistGate>
       </Provider>
     );
   }
